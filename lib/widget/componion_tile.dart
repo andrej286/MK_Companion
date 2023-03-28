@@ -34,7 +34,7 @@ class CompanionTile extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/home');
+                    Navigator.pushNamed(context, '/detail', arguments: companionPost.id);
                   },
                   child: Text(
                     'Details',

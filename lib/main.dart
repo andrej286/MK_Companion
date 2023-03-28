@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mis_project/screen/companion_grid_screen.dart';
+import 'package:mis_project/screen/details_screen.dart';
 
 import 'constants.dart';
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/companions': (context) => const CompanionGridScreen(),
         '/home': (context) => const MyHomePage(),
+        '/detail': (context) => const DetailScreen(),
       },
       home: const MyHomePage(),
     );

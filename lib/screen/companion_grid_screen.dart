@@ -23,7 +23,7 @@ class _CompanionGridScreen extends State<CompanionGridScreen> {
   void initState() {
     super.initState();
 
-    Owner owner2 = Owner(id: '1', ownerName: 'ownerName', ownerSurname: 'ownerSurname', number: 'number');
+    Owner owner2 = Owner(id: '1', ownerName: 'ownerName', ownerSurname: 'ownerSurname', number: 'number', mail: 'kjamil.kakaleski@students.finki.ukim.mk');
 
     List<CompanionPost> posts = [
       CompanionPost(id: '1', owner: owner2, companionName: 'Kjamil1', description: 'a pet', imageUrl: 'https://images.hindustantimes.com/img/2022/11/20/1600x900/Fh8-GrTWQAMEno8_1668910522750_1668910539398_1668910539398.jpg'),
