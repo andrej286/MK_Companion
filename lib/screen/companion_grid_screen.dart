@@ -32,7 +32,16 @@ class _CompanionGridScreen extends State<CompanionGridScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Companions'), backgroundColor: customGreen),
+        appBar: AppBar(
+            title: Text('Companions'),
+            actions: <Widget>[
+              IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/add');
+                  },
+                  icon: Icon(Icons.add))
+            ],
+            backgroundColor: customGreen),
         backgroundColor: Colors.white,
         body: GridView.builder(
           itemCount: myWidgets.length,

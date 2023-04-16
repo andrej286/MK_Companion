@@ -8,6 +8,7 @@ class CompanionPost {
   final String companionName;
   final String description;
   final String imageUrl;
+  final String? location;
   double? subjectLatitude;
   double? subjectLongitude;
 
@@ -19,5 +20,6 @@ class CompanionPost {
     required this.imageUrl,
     this.subjectLatitude,
     this.subjectLongitude,
+    this.location
   });
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mis_project/provider/companion_provider.dart';
+import 'package:mis_project/screen/add_post_screen.dart';
 import 'package:mis_project/screen/companion_grid_screen.dart';
 import 'package:mis_project/screen/details_screen.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
             '/companions': (context) => const CompanionGridScreen(),
             '/home': (context) => const MyHomePage(),
             '/detail': (context) => const DetailScreen(),
+            '/add': (context) => const AddPostScreen(),
           },
           home: const MyHomePage(),
         ));
