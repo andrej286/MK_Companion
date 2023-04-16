@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../constants.dart';
 import '../model/companion_post.dart';
-import '../model/owner.dart';
+import '../provider/companion_provider.dart';
 import '../widget/componion_tile.dart';
 
 class CompanionGridScreen extends StatefulWidget {
@@ -23,19 +24,9 @@ class _CompanionGridScreen extends State<CompanionGridScreen> {
   void initState() {
     super.initState();
 
-    Owner owner2 = Owner(id: '1', ownerName: 'ownerName', ownerSurname: 'ownerSurname', number: 'number', mail: 'kjamil.kakaleski@students.finki.ukim.mk');
+    final companionProvider = Provider.of<CompanionProvider>(context, listen: false);
 
-    List<CompanionPost> posts = [
-      CompanionPost(id: '1', owner: owner2, companionName: 'Kjamil1', description: 'a pet', imageUrl: 'https://images.hindustantimes.com/img/2022/11/20/1600x900/Fh8-GrTWQAMEno8_1668910522750_1668910539398_1668910539398.jpg'),
-      CompanionPost(id: '2', owner: owner2, companionName: 'Kjamil2', description: 'a pet', imageUrl: 'https://cdn.mos.cms.futurecdn.net/ASHH5bDmsp6wnK6mEfZdcU.jpg'),
-      CompanionPost(id: '3', owner: owner2, companionName: 'Kjamil3', description: 'a pet', imageUrl: 'https://images.hindustantimes.com/img/2022/11/20/1600x900/Fh8-GrTWQAMEno8_1668910522750_1668910539398_1668910539398.jpg'),
-      CompanionPost(id: '4', owner: owner2, companionName: 'Kjamil4', description: 'a pet', imageUrl: 'https://images.hindustantimes.com/img/2022/11/20/1600x900/Fh8-GrTWQAMEno8_1668910522750_1668910539398_1668910539398.jpg'),
-      CompanionPost(id: '5', owner: owner2, companionName: 'Kjamil5', description: 'a pet', imageUrl: 'https://images.hindustantimes.com/img/2022/11/20/1600x900/Fh8-GrTWQAMEno8_1668910522750_1668910539398_1668910539398.jpg'),
-      CompanionPost(id: '6', owner: owner2, companionName: 'Kjamil6', description: 'a pet', imageUrl: 'https://images.hindustantimes.com/img/2022/11/20/1600x900/Fh8-GrTWQAMEno8_1668910522750_1668910539398_1668910539398.jpg'),
-      CompanionPost(id: '7', owner: owner2, companionName: 'Kjamil7', description: 'a pet', imageUrl: 'https://images.hindustantimes.com/img/2022/11/20/1600x900/Fh8-GrTWQAMEno8_1668910522750_1668910539398_1668910539398.jpg'),
-    ];
-
-    posts.forEach((companionPost) => myWidgets.add(CompanionTile(companionPost)));
+    companionProvider.posts.forEach((companionPost) => myWidgets.add(CompanionTile(companionPost)));
   }
 
   @override

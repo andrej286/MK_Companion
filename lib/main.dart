@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mis_project/provider/companion_provider.dart';
 import 'package:mis_project/screen/companion_grid_screen.dart';
 import 'package:mis_project/screen/details_screen.dart';
+import 'package:provider/provider.dart';
 
 import 'constants.dart';
 
@@ -13,16 +15,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MK-Companion',
-      initialRoute: '/home',
-      routes: {
-        '/companions': (context) => const CompanionGridScreen(),
-        '/home': (context) => const MyHomePage(),
-        '/detail': (context) => const DetailScreen(),
-      },
-      home: const MyHomePage(),
-    );
+    return ChangeNotifierProvider(
+        create: (_) => CompanionProvider(),
+        child: MaterialApp(
+          title: 'MK-Companion',
+          initialRoute: '/home',
+          routes: {
+            '/companions': (context) => const CompanionGridScreen(),
+            '/home': (context) => const MyHomePage(),
+            '/detail': (context) => const DetailScreen(),
+          },
+          home: const MyHomePage(),
+        ));
   }
 }
 
