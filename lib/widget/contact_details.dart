@@ -14,7 +14,7 @@ class ContactDetailsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(mainAxisSize: MainAxisSize.min, children: [
       Container(alignment: Alignment.centerLeft,
-          child: Text( style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900), 'The creator of the pot'),
+          child: Text( style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900), 'The creator of the post'),
         ),
       Container(alignment: Alignment.centerLeft,child: Text( style: TextStyle(fontSize: 15), '${companionPost.owner.ownerName} ${companionPost.owner.ownerSurname}'), padding: EdgeInsets.symmetric(vertical: 10)),
       Container(alignment: Alignment.centerLeft,child: Text( style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900), 'Contact phone')),

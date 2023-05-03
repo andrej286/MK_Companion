@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../constants.dart';
 import '../provider/companion_provider.dart';
-import '../widget/componion_tile.dart';
+import '../widget/compаnion_tile.dart';
 
 class CompanionGridScreen extends StatefulWidget {
   const CompanionGridScreen({super.key});
