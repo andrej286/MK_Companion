@@ -32,4 +32,8 @@ class CompanionProvider extends ChangeNotifier {
     _posts.remove(post);
     notifyListeners();
   }
+
+  String getSize() {
+    return (_posts.length + 1).toString();
+  }
 }

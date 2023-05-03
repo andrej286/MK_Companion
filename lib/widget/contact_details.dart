@@ -34,7 +34,7 @@ class ContactDetailsWidget extends StatelessWidget {
                   style: TextStyle(fontSize: 15),
                   '${companionPost.owner.number}'))),
       Container(alignment: Alignment.centerLeft,child: Text( style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900), 'Location')),
-      Container(alignment: Alignment.centerLeft,child: Text( style: TextStyle(fontSize: 15), 'Location'), padding: EdgeInsets.symmetric(vertical: 10)),
+      Container(alignment: Alignment.centerLeft,child: Text( style: TextStyle(fontSize: 15), '${companionPost.location}'), padding: EdgeInsets.symmetric(vertical: 10)),
       Container(alignment: Alignment.centerLeft,child: Text( style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900), 'Email')),
       Container(
           alignment: Alignment.centerLeft,

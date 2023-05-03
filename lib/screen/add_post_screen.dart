@@ -6,14 +6,6 @@ import '../constants.dart';
 import '../model/companion_post.dart';
 import '../model/owner.dart';
 import '../provider/companion_provider.dart';
-import 'dart:math';
-
-String getRandomString(int length) {
-  const _chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  Random _rnd = Random();
-  return String.fromCharCodes(Iterable.generate(
-      length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
-}
 
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({super.key});
@@ -46,10 +38,15 @@ class _AddPostScreen extends State<AddPostScreen> {
     final companionDescription = _companionDescriptionController.text;
     final companionImage = _companionImageController.text;
 
+    final companionProvider =
+        Provider.of<CompanionProvider>(context, listen: false);
+
+    var postId = companionProvider.getSize();
+
     var newPost = CompanionPost(
-        id: getRandomString(7),
+        id: postId,
         owner: Owner(
-            id: getRandomString(7),
+            id: postId,
             ownerName: ownerName,
             ownerSurname: ownerSurname,
             number: ownerNumber,
@@ -58,9 +55,6 @@ class _AddPostScreen extends State<AddPostScreen> {
         location: companionLocation,
         description: companionDescription,
         imageUrl: companionImage);
-
-    final companionProvider =
-        Provider.of<CompanionProvider>(context, listen: false);
 
     companionProvider.addPost(newPost);
 

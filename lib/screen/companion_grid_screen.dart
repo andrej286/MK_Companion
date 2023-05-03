@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../constants.dart';
-import '../model/companion_post.dart';
 import '../provider/companion_provider.dart';
 import '../widget/componion_tile.dart';
 
@@ -15,18 +14,30 @@ class CompanionGridScreen extends StatefulWidget {
 }
 
 class _CompanionGridScreen extends State<CompanionGridScreen> {
-
-  List<CompanionPost> posts = [];
-
   List<CompanionTile> myWidgets = [];
+  List<CompanionTile> filterWidgets = [];
 
   @override
   void initState() {
     super.initState();
 
-    final companionProvider = Provider.of<CompanionProvider>(context, listen: false);
+    final companionProvider =
+        Provider.of<CompanionProvider>(context, listen: false);
 
-    companionProvider.posts.forEach((companionPost) => myWidgets.add(CompanionTile(companionPost)));
+    companionProvider.posts.forEach(
+        (companionPost) => myWidgets.add(CompanionTile(companionPost)));
+
+    _filterItems("");
+  }
+
+  void _filterItems(value) {
+    setState(() {
+      filterWidgets = myWidgets
+          .where((myWidget) =>
+          myWidget.companionPost.companionName.toLowerCase().contains(value.toString().toLowerCase()) ||
+              myWidget.companionPost.location.toLowerCase().contains(value.toString().toLowerCase()))
+          .toList();
+    });
   }
 
   @override
@@ -43,18 +54,27 @@ class _CompanionGridScreen extends State<CompanionGridScreen> {
             ],
             backgroundColor: customGreen),
         backgroundColor: Colors.white,
-        body: GridView.builder(
-          itemCount: myWidgets.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 8.0,
-            crossAxisSpacing: 8.0,
-            childAspectRatio: 0.68,
+        body: Column(children: [
+          TextField(
+            onChanged: (value) => _filterItems(value),
+            decoration: InputDecoration(
+              hintText: 'Search by name or location...',
+            ),
           ),
-          itemBuilder: (BuildContext context, int index) {
-            return myWidgets[index];
-          },
-          padding: const EdgeInsets.only(left: 10, right: 5),
-        ));
+          Expanded(
+              child: GridView.builder(
+            itemCount: filterWidgets.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 8.0,
+              crossAxisSpacing: 8.0,
+              childAspectRatio: 0.68,
+            ),
+            itemBuilder: (BuildContext context, int index) {
+              return filterWidgets[index];
+            },
+            padding: const EdgeInsets.only(left: 10, right: 5),
+          ))
+        ]));
   }
 }
